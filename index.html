@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Best Samvian Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .calculator {
+    background-color: blue;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+  }
+  .calculator h2 {
+    color: #333;
+    font-size: 24px;
+    margin-top: 0;
+  }
+  .calculator input[type="text"] {
+    width: 100%;
+    height: 40px;
+    font-size: 18px;
+    text-align: right;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 0 10px;
+    margin-bottom: 10px;
+  }
+  .calculator .buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .calculator button {
+    width: 100%;
+    height: 50px;
+    font-size: 18px;
+    background-color: red;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .calculator button:hover {
+    background-color: #e0e0e0;
+  }
+  .calculator button:active {
+    background-color: #ccc;
+  }
+  .calculator .equals {
+    grid-column: span 2;
+  }
+  .calculator .clear {
+    grid-column: span 2;
+    background-color: #ffcccc;
+  }
+</style>
+</head>
+<body>
+
+<div class="calculator">
+  <h2>Samvian Cute Calculator</h2>
+  <input type="text" id="display" disabled>
+  <div class="buttons">
+    <button onclick="appendToDisplay('7')">7</button>
+    <button onclick="appendToDisplay('8')">8</button>
+    <button onclick="appendToDisplay('9')">9</button>
+    <button onclick="appendToDisplay('/')">/</button>
+    <button onclick="appendToDisplay('4')">4</button>
+    <button onclick="appendToDisplay('5')">5</button>
+    <button onclick="appendToDisplay('6')">6</button>
+    <button onclick="appendToDisplay('*')">*</button>
+    <button onclick="appendToDisplay('1')">1</button>
+    <button onclick="appendToDisplay('2')">2</button>
+    <button onclick="appendToDisplay('3')">3</button>
+    <button onclick="appendToDisplay('-')">-</button>
+    <button onclick="appendToDisplay('0')">0</button>
+    <button onclick="appendToDisplay('.')">.</button>
+    <button onclick="clearDisplay()" class="clear">Del</button>
+    <button onclick="appendToDisplay('+')">+</button>
+    <button onclick="calculate()" class="equals">=</button>
+  </div>
+</div>
+
+<script>
+  function appendToDisplay(value) {
+    document.getElementById('display').value += value;
+  }
+
+  function clearDisplay() {
+    document.getElementById('display').value = '';
+  }
+
+  function calculate() {
+    let display = document.getElementById('display').value;
+    try {
+      let result = eval(display);
+      document.getElementById('display').value = result;
+    } catch (error) {
+      alert('Error in calculation!');
+    }
+  }
+</script>
+
+</body>
+</html>
